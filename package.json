@@ -1,0 +1,28 @@
+{
+  "name": "bunmud",
+  "version": "1.0.0",
+  "description": "A discord MUD written with discord.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bunnypot/BUNMUD.git"
+  },
+  "keywords": [
+    "discord",
+    "mud",
+    "game"
+  ],
+  "author": "AJ \"bunnypot\" Love",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bunnypot/BUNMUD/issues"
+  },
+  "homepage": "https://github.com/bunnypot/BUNMUD#readme",
+  "dependencies": {
+    "bufferutil": "^3.0.2",
+    "discord.js": "^11.2.1"
+  }
+}
