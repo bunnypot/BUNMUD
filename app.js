@@ -5,7 +5,7 @@ const discord_client = new Discord.Client();
 discord_client.login(process.env.DISCORD_TOKEN);
 
 //REDIS
-const Redis = require("redis"),
+const Redis = require("redis");
 const redis_client = Redis.createClient(process.env.REDIS_URL);
 
 redis_client.set("pings", 0, Redis.print);
