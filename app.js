@@ -15,7 +15,7 @@ discord_client.on('message', msg => {
 	if (msg.content === 'ping') {
 		redis_client.get("pings", function (err, reply) {
 			redis_client.set("pings", parseInt(reply)+1, Redis.print);
-			msg.reply('Pong! ping count is '+parseInt(reply)+1);
+			msg.reply('Pong! ping count is '+(parseInt(reply)+1));
 		});
 	}	
 });
