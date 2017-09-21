@@ -16,7 +16,7 @@ global.discord_client.on("ready", () => {
 });
 
 global.discord_client.on('message', msg => {
-	if(message.author.id == "297229074777112576") { return; } 
+	if(msg.author.id == "297229074777112576") { return; } 
 
 	if (msg.content === "ping") {
 		redis_client.get("pings", function (err, reply) {
