@@ -23,7 +23,7 @@ var help = {
 
 global.discord_client.on('message', msg => {
     //listen to dicerolls 
-    if(msg.content.substr(0,2).toLowerCase() == ".c new") {
+    if(msg.content.substr(0,6).toLowerCase() == ".c new") {
         var name  = msg.content.match(msg.content.substr(2));
         msg.reply("```INFO:: Starting character process for "+name+"...```");
     }
