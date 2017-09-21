@@ -11,6 +11,12 @@ const redis_client = Redis.createClient(process.env.REDIS_URL);
 redis_client.set("pings", 0, Redis.print);
 
 //EVENTS
+discord_client.on('ready', () => {
+    const channel = discord_client.channels.get('358044545549598721');
+    if (!channel) return;
+  	channel.send("```INFO:: grid net started.```");
+});
+
 discord_client.on('message', msg => {
 	if (msg.content === 'ping') {
 		redis_client.get("pings", function (err, reply) {
