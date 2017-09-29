@@ -20,7 +20,7 @@ global.DiceExpression = require('dice-expression-evaluator');
 global.discord_client.on("ready", () => {
     const channel = global.discord_client.channels.get("358044545549598721");
     if (!channel) return;
-  	channel.send("```INFO:: grid net started.```");
+  	channel.send("`INFO:: grid net started.`");
 });
 
 global.discord_client.on('message', msg => {
@@ -32,14 +32,45 @@ global.discord_client.on('message', msg => {
 			msg.reply("Pong! ping count is "+(parseInt(reply)+1));
 		});
 	}
-	commandObject = commandParse(msg.content);
+
+	var commandObject = commandParse(msg.content);
 	switch(commandObject.command) {
 		case "d": 
-			//diceroll
-			msg.reply("`Result :"+ new global.DiceExpression(commandObject.args.join(''))()+ "`");
+			//Rich Embed Dice Roll
+			var roll = global.DiceExpression(commandObject.args.join('')).roll();
+			var richResult = "";
+
+			if (commandObject.args.join('').indexOf("d6") != -1 && commandObject.args.length == 1) {
+				//roll is d6
+				roll.diceRaw[0].forEach(function(v, i){
+					if (v==1) {richResult += "<:d6_1:363137445774229504>"}
+					if (v==2) {richResult += "<:d6_2:363137446629736458>"}
+					if (v==3) {richResult += "<:d6_3:363137446541787137>"}
+					if (v==4) {richResult += "<:d6_4:363137445706989570>"}
+					if (v==5) {richResult += "<:d6_5:363137447275790336>"}
+					if (v==6) {richResult += "<:d6_6:363137446487130133>"}
+				})
+				richResult += 	+" **Result:**  "+roll.roll;
+			} else {
+				richResult = roll.diceSums.toString()+" **Result:**  "+roll.roll;
+			}
+
+			dicerollEmbed = {
+				"embed": {
+					"color": 9118312,
+				    "fields": [
+				    	{
+				        	"name": "Rolling...",
+				        	"value": richResult
+				    	}
+				    ]
+				}
+			}
+
+			msg.channel.send(dicerollEmbed);
+
 			break;
 		case "c":
-
 			break;
 	}
 	
