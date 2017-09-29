@@ -50,9 +50,9 @@ global.discord_client.on('message', msg => {
 					if (v==5) {richResult += "<:d6_5:363137447275790336>"}
 					if (v==6) {richResult += "<:d6_6:363137446487130133>"}
 				})
-				richResult += 	+" **Result:**  "+roll.roll;
+				richResult += " **Result:**  "+roll.roll;
 			} else {
-				richResult = roll.diceSums.toString()+" **Result:**  "+roll.roll;
+				richResult = roll.diceSums.join(",")+"... **Result:**  "+roll.roll;
 			}
 
 			dicerollEmbed = {
@@ -60,7 +60,7 @@ global.discord_client.on('message', msg => {
 					"color": 9118312,
 				    "fields": [
 				    	{
-				        	"name": "Rolling...",
+				        	"name": "Rolling "+commandObject.args.join(""),
 				        	"value": richResult
 				    	}
 				    ]
